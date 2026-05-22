@@ -14,6 +14,7 @@ class AdminProvider with ChangeNotifier {
 
   bool _cargando = false;
   String? _error;
+  String _vistaActiva = 'dashboard'; // 'dashboard', 'catalogo', etc.
 
   // Getters públicos
   double get ventasHoy => _ventasHoy;
@@ -22,6 +23,15 @@ class AdminProvider with ChangeNotifier {
   int get clientes => _clientes;
   bool get cargando => _cargando;
   String? get error => _error;
+  String get vistaActiva => _vistaActiva;
+
+  // Cambiar sub-vista activa del Tab 0
+  void cambiarVista(String nuevaVista) {
+    if (_vistaActiva != nuevaVista) {
+      _vistaActiva = nuevaVista;
+      notifyListeners();
+    }
+  }
 
   // Cargar datos de manera ficticia (simulada) o real llamando al backend
   Future<void> cargarDatosDashboard() async {

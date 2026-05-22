@@ -55,7 +55,7 @@ class _SaborCard extends StatelessWidget {
     const buttonRed = Color(0xFFE24C4C);
 
     // Definición de color de borde según colorBorde
-    Color borderColor = Colors.transparent;
+    /*Color borderColor = Colors.transparent;
     double borderWidth = 0.0;
 
     if (sabor.colorBorde == 'dorado') {
@@ -67,16 +67,13 @@ class _SaborCard extends StatelessWidget {
     } else if (sabor.colorBorde == 'naranja') {
       borderColor = const Color(0xFFE65100); // Naranja quemado
       borderWidth = 2.0;
-    }
+    }*/
 
     return Container(
       margin: const EdgeInsets.only(bottom: 14.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        border: borderWidth > 0
-            ? Border.all(color: borderColor, width: borderWidth)
-            : Border.all(color: Colors.grey.shade100, width: 1),
+        border: Border.all(color: Colors.grey.shade100, width: 1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.015),

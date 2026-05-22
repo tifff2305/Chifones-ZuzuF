@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import '../models/sabor_model.dart';
 import '../models/categoria_model.dart';
 import 'api_client.dart';

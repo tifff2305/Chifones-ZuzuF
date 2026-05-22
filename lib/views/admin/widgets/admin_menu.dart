@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../providers/auth_provider.dart';
+import '../../../providers/admin_provider.dart';
 
 class AdminMenu extends StatelessWidget {
   const AdminMenu({Key? key}) : super(key: key);
@@ -14,7 +15,9 @@ class AdminMenu extends StatelessWidget {
         _buildMenuOption(
           icon: Icons.edit_note_rounded,
           title: 'Catálogo',
-          onTap: () => Navigator.of(context).pushNamed('/catalogo'),
+          onTap: () {
+            Provider.of<AdminProvider>(context, listen: false).cambiarVista('catalogo');
+          },
         ),
         _buildMenuOption(
           icon: Icons.edit_note_rounded,

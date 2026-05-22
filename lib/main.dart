@@ -13,10 +13,6 @@ import 'providers/catalogo_provider.dart';
 import 'views/splash/splash_view.dart';
 import 'views/login/login_view.dart';
 import 'views/admin/admin_dashboard_view.dart';
-import 'views/admin/catalogo/catalogo_view.dart';
-
-// Importación de tus nuevas constantes genéricas
-import 'views/admin/widgets/diseño_cont.dart'; 
 
 void main() {
   // 1. Inicialización de dependencias base de la capa de API y Servicios
@@ -108,7 +104,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginView(),
         '/admin': (context) => const AdminDashboardView(),
-        '/catalogo': (context) => const CatalogoView(),
       },
     );
   }
