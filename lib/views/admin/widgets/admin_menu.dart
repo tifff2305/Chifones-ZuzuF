@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../providers/auth_provider.dart';
-import '../../../providers/admin_provider.dart';
+import '../../../../providers/auth_provider.dart';
+import '../catalogo/catalogo_view.dart'; // Asegúrate de que la ruta de importación sea correcta
 
 class AdminMenu extends StatelessWidget {
   const AdminMenu({Key? key}) : super(key: key);
@@ -16,23 +16,32 @@ class AdminMenu extends StatelessWidget {
           icon: Icons.edit_note_rounded,
           title: 'Catálogo',
           onTap: () {
-            Provider.of<AdminProvider>(context, listen: false).cambiarVista('catalogo');
+            // 🚀 OPTIMIZADO: Abre el catálogo de forma limpia como una sub-vista independiente
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const CatalogoView()),
+            );
           },
         ),
         _buildMenuOption(
           icon: Icons.edit_note_rounded,
           title: 'Envases',
-          onTap: () {},
+          onTap: () {
+            // Próximamente: Navigator.push para Envases
+          },
         ),
         _buildMenuOption(
           icon: Icons.edit_note_rounded,
           title: 'Cartilla',
-          onTap: () {},
+          onTap: () {
+            // Próximamente: Navigator.push para Cartilla
+          },
         ),
         _buildMenuOption(
           icon: Icons.edit_note_rounded,
           title: 'Otros',
-          onTap: () {},
+          onTap: () {
+            // Próximamente
+          },
         ),
         const SizedBox(height: 20),
         TextButton.icon(
@@ -41,7 +50,10 @@ class AdminMenu extends StatelessWidget {
             Navigator.of(context).pushReplacementNamed('/login');
           },
           icon: const Icon(Icons.exit_to_app_rounded, color: Colors.grey),
-          label: const Text('Cerrar Sesión', style: TextStyle(color: Colors.grey)),
+          label: const Text(
+            'Cerrar Sesión',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),
+          ),
         ),
       ],
     );
@@ -70,16 +82,16 @@ class AdminMenu extends StatelessWidget {
       ),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 4.0),
-        leading: Icon(icon, color: buttonRed, size: 30),
+        leading: Icon(icon, color: buttonRed, size: 34),
         title: Text(
           title,
           style: const TextStyle(
             color: textDark,
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        trailing: const Icon(Icons.chevron_right_rounded, color: buttonRed, size: 30),
+        trailing: const Icon(Icons.chevron_right_rounded, color: Colors.grey),
         onTap: onTap,
       ),
     );

@@ -13,6 +13,6 @@ class AppDesign {
   static const double cardAspectRatio = 1.15;
 
   // Tamaños de Fuente
-  static const double fontSizeTitle = 13.0;
-  static const double fontSizeIconText = 22.0; // Para el icono custom "Bs"
+  static const double fontSizeTitle = 14.0;
+  static const double fontSizeIconText = 21.0; // Para el icono custom "Bs"
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../models/sabor_model.dart';
-import '../../../providers/catalogo_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../../models/sabor_model.dart';
+import '../../../../providers/catalogo_provider.dart';
 
 class EditarSaborView extends StatefulWidget {
   final SaborModel sabor;
@@ -79,19 +80,19 @@ class _EditarSaborViewState extends State<EditarSaborView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        scrolledUnderElevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded, color: textDark),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
+        title: Text(
           'Editar Sabor',
-          style: TextStyle(
+          style: GoogleFonts.alfaSlabOne(
+            fontSize: 22,
             color: textDark,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
           ),
         ),
-        centerTitle: true,
+        centerTitle: false,
       ),
       body: SafeArea(
         child: Consumer<CatalogoProvider>(
@@ -107,12 +108,11 @@ class _EditarSaborViewState extends State<EditarSaborView> {
                       children: [
                         const SizedBox(height: 10),
                         
-                        // Inputs del Formulario
                         _buildLabel('Nombre del Sabor'),
                         _buildNombreField(),
                         const SizedBox(height: 20),
 
-                        _buildLabel('Precio (S/.)'),
+                        _buildLabel('Precio (Bs)'),
                         _buildPrecioField(),
                         const SizedBox(height: 20),
 
@@ -120,7 +120,6 @@ class _EditarSaborViewState extends State<EditarSaborView> {
                         _buildCategoriaDropdown(provider),
                         const SizedBox(height: 40),
 
-                        // Botón de Guardar Redondeado Rojo Premium
                         _buildGuardarButton(context),
                       ],
                     ),
@@ -128,7 +127,7 @@ class _EditarSaborViewState extends State<EditarSaborView> {
                 ),
                 if (provider.cargando)
                   Container(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.black.withOpacity(0.25),
                     child: const Center(
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFE24C4C)),
@@ -196,7 +195,6 @@ class _EditarSaborViewState extends State<EditarSaborView> {
   Widget _buildCategoriaDropdown(CatalogoProvider provider) {
     const textDark = Color(0xFF4A1A17);
 
-    // Obtener nombres de categoría disponibles del provider, o usar fallback si está vacío
     final listaCategorias = provider.categorias.map((c) => c.nombre).toList();
     if (!listaCategorias.contains(_categoriaSeleccionada)) {
       listaCategorias.add(_categoriaSeleccionada);

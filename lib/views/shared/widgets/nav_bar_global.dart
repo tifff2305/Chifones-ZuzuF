@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AdminNavBar extends StatelessWidget {
-  final int currentTab;
-  final ValueChanged<int> onTabSelected;
+class NavBarGlobal extends StatelessWidget {
+  final int pestanaActual;
+  final ValueChanged<int> alCambiarPestana;
+  final List<IconData> iconos;
 
-  const AdminNavBar({
+  const NavBarGlobal({
     Key? key,
-    required this.currentTab,
-    required this.onTabSelected,
+    required this.pestanaActual,
+    required this.alCambiarPestana,
+    required this.iconos,
   }) : super(key: key);
 
   @override
@@ -30,33 +32,28 @@ class AdminNavBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem(0, Icons.home_rounded),
-          _buildNavItem(1, Icons.shopping_bag_outlined),
-          _buildNavItem(2, Icons.bar_chart_rounded),
-          _buildNavItem(3, Icons.person_outline_rounded),
-        ],
+        children: List.generate(iconos.length, (indice) => _construirItem(indice, iconos[indice])),
       ),
     );
   }
 
-  Widget _buildNavItem(int index, IconData icon) {
-    const buttonRed = Color(0xFFE24C4C);
-    final isSelected = currentTab == index;
+  Widget _construirItem(int indice, IconData icono) {
+    const colorRojo = Color(0xFFE24C4C);
+    final seleccionado = pestanaActual == indice;
 
     return GestureDetector(
-      onTap: () => onTabSelected(index),
+      onTap: () => alCambiarPestana(indice),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          color: isSelected ? buttonRed : Colors.transparent,
+          color: seleccionado ? colorRojo : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Icon(
-          icon,
+          icono,
           size: 26,
-          color: isSelected ? Colors.white : const Color(0xFFB39896),
+          color: seleccionado ? Colors.white : Colors.grey.shade400,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/diseño_cont.dart';
+
+import '../../shared/diseños/diseño_cont.dart';
 
 class AdminMetricas extends StatelessWidget {
   const AdminMetricas({Key? key}) : super(key: key);

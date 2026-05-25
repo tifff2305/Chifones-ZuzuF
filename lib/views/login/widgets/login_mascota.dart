@@ -10,36 +10,11 @@ class LoginMascota extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 30),
-        // Círculo contenedor de la mascota
-        Container(
-          width: 130,
-          height: 130,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.04),
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: ClipOval(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image.network(
-                'https://raw.githubusercontent.com/antigravity-assets/mascot/main/chifon_chef.png',
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Icon(
-                    Icons.bakery_dining_rounded,
-                    size: 70,
-                    color: Color(0xFFD68A56),
-                  );
-                },
-              ),
-            ),
+        SizedBox(
+          height: 140,
+          child: Image.asset(
+            'assets/images/chifon_chef_waving.jpg',
+            fit: BoxFit.contain,
           ),
         ),
         const SizedBox(height: 20),

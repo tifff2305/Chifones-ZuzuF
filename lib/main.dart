@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zuzu/views/admin/widgets/dise%C3%B1o_cont.dart';
+import 'package:provider/provider.dart';
+import 'package:zuzu/views/shared/dise%C3%B1os/dise%C3%B1o_cont.dart';
 
+import 'providers/admin_provider.dart';
+import 'providers/auth_provider.dart';
+import 'providers/catalogo_provider.dart';
 // Importaciones de la Arquitectura
 import 'services/api_client.dart';
 import 'services/auth_service.dart';
 import 'services/catalogo_service.dart';
-import 'providers/auth_provider.dart';
-import 'providers/admin_provider.dart';
-import 'providers/catalogo_provider.dart';
-import 'views/splash/splash_view.dart';
-import 'views/login/login_view.dart';
 import 'views/admin/admin_dashboard_view.dart';
+import 'views/login/login_view.dart';
+import 'views/splash/splash_view.dart';
 
 void main() {
   // 1. Inicialización de dependencias base de la capa de API y Servicios

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../login/login_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -51,7 +52,6 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     // Paleta de colores premium basada en los chifones Zuzu
-    const primarySalmon = Color(0xFFFF8B8B);
     const darkBrown = Color(0xFF4A1A17);
 
     return Scaffold(
@@ -59,119 +59,59 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
-          color: primarySalmon,
+          image: DecorationImage(
+            image: AssetImage('assets/images/background_wavy.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-        child: Stack(
-          children: [
-            // Onda decorativa en la parte superior
-            Positioned(
-              top: -50,
-              left: -50,
-              child: CustomPaint(
-                size: const Size(300, 300),
-                painter: WavePainter(color: Colors.white.withOpacity(0.12)),
-              ),
-            ),
-            // Onda decorativa en la parte inferior
-            Positioned(
-              bottom: -80,
-              right: -80,
-              child: CustomPaint(
-                size: const Size(350, 350),
-                painter: WavePainter(color: Colors.white.withOpacity(0.15)),
-              ),
-            ),
-            // Contenido Central animado
-            Center(
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Nombre de la Marca
-                      Text(
-                        'CHIFONES',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 2.0,
-                          color: darkBrown,
-                        ),
+        child: SafeArea(
+          child: Center(
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Nombre de la Marca con fuente Slab premium
+                    Text(
+                      'CHIFONES',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.alfaSlabOne(
+                        fontSize: 48,
+                        color: darkBrown,
+                        height: 1.1,
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'ZUZU',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 2.0,
-                          color: darkBrown,
-                        ),
+                    ),
+                    Text(
+                      'ZUZU',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.alfaSlabOne(
+                        fontSize: 48,
+                        color: darkBrown,
+                        height: 1.1,
                       ),
-                      const SizedBox(height: 24),
-                      // Lema Inspiracional
-                      Text(
-                        '"No es mi fuerza, es la gracia de Dios"',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.w600,
-                          color: darkBrown.withOpacity(0.85),
-                        ),
+                    ),
+                    const SizedBox(height: 28),
+                    // Lema Inspiracional
+                    Text(
+                      '"No es mi fuerza, es la gracia de Dios"',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: darkBrown,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
 
-// Pintor de ondas vectoriales para fondo estético premium
-class WavePainter extends CustomPainter {
-  final Color color;
-
-  WavePainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-
-    final path = Path();
-    path.moveTo(0, size.height * 0.4);
-    
-    // Curvas Bezier estéticas
-    path.quadraticBezierTo(
-      size.width * 0.25,
-      size.height * 0.2,
-      size.width * 0.5,
-      size.height * 0.4,
-    );
-    path.quadraticBezierTo(
-      size.width * 0.75,
-      size.height * 0.6,
-      size.width,
-      size.height * 0.35,
-    );
-    
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}

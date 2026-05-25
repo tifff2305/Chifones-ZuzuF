@@ -20,7 +20,7 @@ class SaboresList extends StatelessWidget {
           padding: EdgeInsets.all(32.0),
           child: Text(
             'No hay sabores registrados.',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
           ),
         ),
       );
@@ -54,26 +54,13 @@ class _SaborCard extends StatelessWidget {
     const textDark = Color(0xFF4A1A17);
     const buttonRed = Color(0xFFE24C4C);
 
-    // Definición de color de borde según colorBorde
-    /*Color borderColor = Colors.transparent;
-    double borderWidth = 0.0;
-
-    if (sabor.colorBorde == 'dorado') {
-      borderColor = const Color(0xFFD4AF37); // Oro premium
-      borderWidth = 2.0;
-    } else if (sabor.colorBorde == 'verde') {
-      borderColor = const Color(0xFF2E7D32); // Verde esmeralda
-      borderWidth = 2.0;
-    } else if (sabor.colorBorde == 'naranja') {
-      borderColor = const Color(0xFFE65100); // Naranja quemado
-      borderWidth = 2.0;
-    }*/
-
     return Container(
       margin: const EdgeInsets.only(bottom: 14.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.grey.shade100, width: 1),
+        borderRadius: BorderRadius.circular(18),
+        // 🌟 Borde gris sutil unificado
+        border: Border.all(color: Colors.grey.shade100, width: 1.2),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.015),
@@ -94,16 +81,17 @@ class _SaborCard extends StatelessWidget {
                   Text(
                     sabor.nombre,
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold,
                       color: textDark,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Row(
                     children: [
+                      // Badge de la Categoría
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
                           color: buttonRed.withOpacity(0.06),
                           borderRadius: BorderRadius.circular(12),
@@ -111,15 +99,16 @@ class _SaborCard extends StatelessWidget {
                         child: Text(
                           sabor.categoria,
                           style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
                             color: buttonRed,
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 12),
+                      // 🌟 Moneda local corregida a Bolivianos
                       Text(
-                        'S/. ${sabor.precio.toStringAsFixed(2)}',
+                        '${sabor.precio.toStringAsFixed(2)} Bs',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -144,9 +133,9 @@ class _SaborCard extends StatelessWidget {
                   inactiveTrackColor: Colors.grey.shade200,
                   onChanged: (_) => onToggleActivo(sabor),
                 ),
-                const SizedBox(width: 4),
+                const SizedBox(width: 2),
                 IconButton(
-                  icon: const Icon(Icons.edit_rounded, color: buttonRed),
+                  icon: const Icon(Icons.edit_rounded, color: buttonRed, size: 22),
                   tooltip: 'Editar sabor',
                   onPressed: () {
                     Navigator.of(context).push(
