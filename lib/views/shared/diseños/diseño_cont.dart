@@ -14,5 +14,5 @@ class AppDesign {
 
   // Tamaños de Fuente
   static const double fontSizeTitle = 14.0;
-  static const double fontSizeIconText = 21.0; // Para el icono custom "Bs"
+  static const double fontSizeIconText = 20.0; // Para el icono custom "Bs"
 }

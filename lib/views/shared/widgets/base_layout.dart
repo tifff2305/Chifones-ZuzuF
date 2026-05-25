@@ -40,7 +40,7 @@ class _BaseLayoutState extends State<BaseLayout> {
                   titulo: widget.tituloCabecera,
                   saludo: widget.saludoCabecera,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
               ],
               Expanded(
                 child: IndexedStack(

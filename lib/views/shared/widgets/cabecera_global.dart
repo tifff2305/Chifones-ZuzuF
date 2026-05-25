@@ -33,7 +33,6 @@ class CabeceraGlobal extends StatelessWidget {
               ),
             ),
             
-            // 🌟 MODIFICADO: Se eliminó el contenedor circular blanco. 
             // Ahora la imagen de la mascota está completamente suelta y transparente.
             Image.asset(
               rutaImagenMascota,
@@ -43,7 +42,7 @@ class CabeceraGlobal extends StatelessWidget {
           ],
         ),
         if (saludo != null) ...[
-          const SizedBox(height: 12),
+          const SizedBox(height: 6),
           Text(
             saludo!,
             style: const TextStyle(

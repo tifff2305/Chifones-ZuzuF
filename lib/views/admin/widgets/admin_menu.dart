@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../providers/auth_provider.dart';
-import '../../catalogo/catalogo_view.dart'; // Asegúrate de que la ruta de importación sea correcta
+import '../../catalogo/catalogo_view.dart';
 
 class AdminMenu extends StatelessWidget {
   const AdminMenu({Key? key}) : super(key: key);

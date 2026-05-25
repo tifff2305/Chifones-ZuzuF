@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../login/login_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -17,8 +16,6 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-
-    // 1. Configurar animación de desvanecimiento (Fade In)
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -26,20 +23,12 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
-
     _animationController.forward();
 
-    // 2. Temporizador para navegar al Login después de 2.8 segundos
     Timer(const Duration(milliseconds: 2800), () {
-      Navigator.of(context).pushReplacement(
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => const LoginView(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-          transitionDuration: const Duration(milliseconds: 650),
-        ),
-      );
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed('/login');
+      }
     });
   }
 
@@ -51,7 +40,6 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    // Paleta de colores premium basada en los chifones Zuzu
     const darkBrown = Color(0xFF4A1A17);
 
     return Scaffold(
@@ -73,27 +61,17 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Nombre de la Marca con fuente Slab premium
                     Text(
                       'CHIFONES',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.alfaSlabOne(
-                        fontSize: 48,
-                        color: darkBrown,
-                        height: 1.1,
-                      ),
+                      style: GoogleFonts.alfaSlabOne(fontSize: 48, color: darkBrown, height: 1.1),
                     ),
                     Text(
                       'ZUZU',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.alfaSlabOne(
-                        fontSize: 48,
-                        color: darkBrown,
-                        height: 1.1,
-                      ),
+                      style: GoogleFonts.alfaSlabOne(fontSize: 48, color: darkBrown, height: 1.1),
                     ),
                     const SizedBox(height: 28),
-                    // Lema Inspiracional
                     Text(
                       '"No es mi fuerza, es la gracia de Dios"',
                       textAlign: TextAlign.center,
@@ -114,4 +92,3 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
     );
   }
 }
-

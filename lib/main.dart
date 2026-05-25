@@ -10,6 +10,8 @@ import 'providers/catalogo_provider.dart';
 import 'services/api_client.dart';
 import 'services/auth_service.dart';
 import 'services/catalogo_service.dart';
+import 'services/pedido_service.dart';
+import 'providers/pedido_provider.dart';
 import 'views/admin/admin_dashboard_view.dart';
 import 'views/login/login_view.dart';
 import 'views/splash/splash_view.dart';
@@ -22,6 +24,7 @@ void main() {
   
   final authService = AuthService(apiClient: apiClient);
   final catalogoService = CatalogoService(apiClient: apiClient);
+  final pedidoService = PedidoService(apiClient: apiClient);
 
   // 2. Iniciar la aplicación envolviéndola en el MultiProvider
   runApp(
@@ -35,6 +38,7 @@ void main() {
         
         // Proveedor del Servicio del Catálogo
         Provider<CatalogoService>.value(value: catalogoService),
+        Provider<PedidoService>.value(value: pedidoService),
 
         // AuthProvider: Maneja el estado de sesión de toda la app
         ChangeNotifierProvider<AuthProvider>(
@@ -49,6 +53,11 @@ void main() {
         // CatalogoProvider: Maneja los datos del catálogo de sabores y categorías
         ChangeNotifierProvider<CatalogoProvider>(
           create: (context) => CatalogoProvider(catalogoService: catalogoService),
+        ),
+
+        // PedidoProvider: Maneja los pedidos del panel de administración
+        ChangeNotifierProvider<PedidoProvider>(
+          create: (context) => PedidoProvider(pedidoService: pedidoService),
         ),
       ],
       child: const MyApp(),
