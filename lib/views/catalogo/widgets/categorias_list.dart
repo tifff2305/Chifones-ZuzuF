@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../models/categoria_model.dart';
+import '../../../models/categoria_model.dart';
 
 class CategoriasList extends StatelessWidget {
   final List<CategoriaModel> categorias;

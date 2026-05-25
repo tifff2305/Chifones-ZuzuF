@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../models/sabor_model.dart';
+import '../../../models/sabor_model.dart';
 import '../editar_sabor_view.dart';
 
 class SaboresList extends StatelessWidget {

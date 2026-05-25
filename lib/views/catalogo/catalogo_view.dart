@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../providers/catalogo_provider.dart';
-import '../../shared/widgets/cabecera_global.dart';
-import '../../shared/widgets/nav_bar_global.dart';
+import '../../providers/catalogo_provider.dart';
+import '../shared/widgets/cabecera_global.dart';
+import '../shared/widgets/nav_bar_global.dart';
 import 'widgets/selector_tabs.dart';
 import 'widgets/sabores_list.dart';
 import 'widgets/categorias_list.dart';
@@ -60,7 +60,7 @@ class _CatalogoViewState extends State<CatalogoView> {
                       child: const Icon(
                         Icons.arrow_back_ios_new_rounded,
                         color: Colors.white,
-                        size: 12,
+                        size: 10,
                       ),
                     ),
                   ),
@@ -75,7 +75,7 @@ class _CatalogoViewState extends State<CatalogoView> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
               // 3. Contenido del Catálogo
               Expanded(

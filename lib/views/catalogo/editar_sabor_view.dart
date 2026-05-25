@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../models/sabor_model.dart';
-import '../../../../providers/catalogo_provider.dart';
+import '../../../models/sabor_model.dart';
+import '../../../providers/catalogo_provider.dart';
 
 class EditarSaborView extends StatefulWidget {
   final SaborModel sabor;
